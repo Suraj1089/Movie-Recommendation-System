@@ -36,7 +36,7 @@ if choice=='search':
     st.dataframe(data)
 
 else:
-    filter_select = st.multiselect('Filter data :',options=['movie_id','movie_title','title','cast','crew'])
+    filter_select = st.multiselect('Filter data :',options=['movie_id','title'])
     
     d = movies.drop('overview',axis=1)
     d = d.sort_values(by=filter_select)

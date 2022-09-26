@@ -18,14 +18,9 @@ def navbar():
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link disabled" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link disabled" href="https://github.com/Suraj1089/Movie-Recommendation-System">View on Github <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">linkedIn</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">Github</a>
-      </li>
+      
     </ul>
   </div>
   </nav>
