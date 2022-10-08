@@ -1,10 +1,12 @@
 import pickle
+import time 
 import streamlit as st
 import requests
 import base64
 from navbar import *
 from dotenv import load_dotenv
 import os 
+
 
 st.set_page_config(page_title='Movie Recommendation System')
 
@@ -67,53 +69,67 @@ selected_movie = st.selectbox(
 )
 
 if st.button('Show Recommendation'):
-    recommended_movie_names,recommended_movie_posters,recommended_movie_overview = recommend(selected_movie)
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        st.write(recommended_movie_names[0])
-        st.write(recommended_movie_overview[0])
-        st.image(recommended_movie_posters[0])
-    with col2:
-        st.text(recommended_movie_names[1])
-        st.text(recommended_movie_overview[1])
-        st.image(recommended_movie_posters[1])
 
-    with col3:
-        st.text(recommended_movie_names[2])
-        st.text(recommended_movie_overview[2])
-        st.image(recommended_movie_posters[2])
-    with col4:
-        st.text(recommended_movie_names[3])
-        st.text(recommended_movie_overview[3])
-        st.image(recommended_movie_posters[3])
-    with col5:
-        st.text(recommended_movie_names[4])
-        st.text(recommended_movie_overview[4])
-        st.image(recommended_movie_posters[4])
+    try:
+            
+        with st.spinner('Getting Recommendation...'):
+            time.sleep(5)
+        st.success('Done!')
+        recommended_movie_names,recommended_movie_posters,recommended_movie_overview = recommend(selected_movie)
+        col1, col2, col3, col4, col5 = st.columns(5)
+        with col1:
+            st.write(recommended_movie_names[0])
+            st.write(recommended_movie_overview[0])
+            st.image(recommended_movie_posters[0])
+        with col2:
+            st.text(recommended_movie_names[1])
+            st.text(recommended_movie_overview[1])
+            st.image(recommended_movie_posters[1])
 
-    recommended_movie_names,recommended_movie_posters,recommended_movie_overview = recommend(selected_movie)
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        st.write(recommended_movie_names[5])
-        st.write(recommended_movie_overview[5])
-        st.image(recommended_movie_posters[5])
-    with col2:
-        st.text(recommended_movie_names[6])
-        st.text(recommended_movie_overview[6])
-        st.image(recommended_movie_posters[6])
+        with col3:
+            st.text(recommended_movie_names[2])
+            st.text(recommended_movie_overview[2])
+            st.image(recommended_movie_posters[2])
+        with col4:
+            st.text(recommended_movie_names[3])
+            st.text(recommended_movie_overview[3])
+            st.image(recommended_movie_posters[3])
+        with col5:
+            st.text(recommended_movie_names[4])
+            st.text(recommended_movie_overview[4])
+            st.image(recommended_movie_posters[4])
 
-    with col3:
-        st.text(recommended_movie_names[7])
-        st.text(recommended_movie_overview[7])
-        st.image(recommended_movie_posters[7])
-    with col4:
-        st.text(recommended_movie_names[8])
-        st.text(recommended_movie_overview[8])
-        st.image(recommended_movie_posters[8])
-    with col5:
-        st.text(recommended_movie_names[9])
-        st.text(recommended_movie_overview[9])
-        st.image(recommended_movie_posters[9])
+        recommended_movie_names,recommended_movie_posters,recommended_movie_overview = recommend(selected_movie)
+        col1, col2, col3, col4, col5 = st.columns(5)
+        with col1:
+            st.write(recommended_movie_names[5])
+            st.write(recommended_movie_overview[5])
+            st.image(recommended_movie_posters[5])
+        with col2:
+            st.text(recommended_movie_names[6])
+            st.text(recommended_movie_overview[6])
+            st.image(recommended_movie_posters[6])
+
+        with col3:
+            st.text(recommended_movie_names[7])
+            st.text(recommended_movie_overview[7])
+            st.image(recommended_movie_posters[7])
+        with col4:
+            st.text(recommended_movie_names[8])
+            st.text(recommended_movie_overview[8])
+            st.image(recommended_movie_posters[8])
+        with col5:
+            st.text(recommended_movie_names[9])
+            st.text(recommended_movie_overview[9])
+            st.image(recommended_movie_posters[9])
+
+    except:
+        st.error('Sorry, could not fetch the recommendations at this moment Try for antoher movie')
+
+
+    
+    with st.expander('View data'):
+        st.dataframe(movies)
 
 
 
